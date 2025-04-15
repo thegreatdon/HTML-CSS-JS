@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>console tricks</title>
+    <script>
+    //data table
+        const data = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 }
+    ];
+     console.table(data);
+
+     //group logs together
+     console.group('Group Label');
+     console.log('Log message 1');
+     console.log('Log message 2');
+     console.groupEnd();
+
+     //timer
+     console.time('myTimer');
+   // Your code here 
+     console.timeEnd('myTimer'); // Outputs the time taken
+
+     //get div content by id
+     
+
+
+    </script>
+</head>
+<body>
+
+    <div id="idInConsole">text in div</div>
+    <script>
+        console.log(idInConsole);
+    </script>
+
+</body>
+
+</html>

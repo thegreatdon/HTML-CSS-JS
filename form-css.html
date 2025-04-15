@@ -2,18 +2,33 @@
 <head>
     <title></title>
     <style>
-
-        
+       
         ::placeholder {
             color: red;
             font-style: italic;
         }
+
+        .menu {
+            display: none;
+          }
+          
+          #toggle:checked + .menu {
+            display: block;
+          }
     </style>
 </head>
 <body>
 <form name="cssform">
     <input type="text" name="inp" size="30" placeholder="default placeholder text styling">
 </form>
+
+<label for="toggle">Menu</label>
+<input type="checkbox" id="toggle">
+<ul class="menu">
+  <li>Home</li>
+  <li>About</li>
+  <li>Contact</li>
+</ul>
 
 
 </body>
