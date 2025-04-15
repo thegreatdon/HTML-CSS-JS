@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <style>
+        .storyCountBody {
+            counter-reset: storynumber;
+        }
+        
+        .storyCount::before {
+            counter-increment: storynumber;
+            content: "Story #" counter(storynumber) ":";
+        }
+        </style>
+    </head>
+<body>
+    <ul class="storyCountBody">
+        <li class="storyCount">story</li>
+        <li class="storyCount">story</li>
+        <li class="storyCount">story</li>
+        <li class="storyCount">story</li>
+    </ul>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>CSS Variabes</title>
+    <style>
+/**/
+          :root {
+            --primary-color: #eb9b34;
+          }
+
+          .root-title {
+            background-color: var(--primary-color);
+            padding: 10px;
+            font-family:arial;
+          }
+
+          .root-body {
+            background-color: #ddd;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 10px;
+            font-family:Garamond;
+          }
+    </style>
+</head>
+<body>
+
+    <div>
+      <span class="root-title">Root Variables Title</span>
+      <div class="root-body">Root Variables Body</div>
+    </div>
+
+</body>
+
+</html>

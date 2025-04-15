@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Modern CSS Features That Every Web Developer Should Know</title>
+    <style>
+        @keyframes spinner {
+            from {
+              transform: rotate(360deg);
+            }
+            to {
+              transform: rotate(0deg);
+            }
+          }
+          
+          .spinner {
+            width: 80px;
+            height: 80px;
+            background-color: transparent;
+            border: 10px inset #eba21a;
+            border-radius: 50%;
+            animation: spinner 1s linear infinite;
+          }
+/**/
+          button {
+            border: none;
+            background-color: #fc9003;
+            color: #111;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.5s;
+          }
+          
+          button:hover {
+            border: none;
+            background-color: #ebb434;
+          }
+          
+          button:active {
+            border: none;
+            background-color: #fc7b03;
+          }
+/**/
+          .alert {
+            margin-bottom: 10px;
+         
+            .title {
+                background-color: #ccc;
+                padding: 10px;
+            }
+         
+            .body {
+                background-color: #ddd;
+                padding: 10px;
+            }
+         }
+/**/
+          :root {
+            --primary-color: #eb9b34;
+          }
+
+          .root-title {
+            background-color: var(--primary-color);
+            padding: 10px;
+            font-family:arial;
+          }
+
+          .root-body {
+            background-color: #ddd;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 10px;
+            font-family:Garamond;
+          }
+    </style>
+</head>
+<body>
+<pre>https://levelup.gitconnected.com/modern-css-features-that-every-web-developer-should-know-d601c2076406</pre>
+    <div class="spinner"></div>
+
+    <hr>
+
+    <button>button</button>
+
+    <hr>
+
+    <div class="alert">
+        <span class="title">nested styles</span>
+    </div>
+
+    <hr>
+
+    <div>
+      <span class="root-title">Root Variables Title</span>
+      <div class="root-body">Root Variables Body</div>
+    </div>
+
+</body>
+
+</html>
