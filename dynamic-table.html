@@ -8,6 +8,8 @@
 <body>
 
 <h2>Sortable Table Example</h2>
+<input type="text" placeholder="Search all columns..." oninput="filterAll(this.value)">
+
 <div class="table-container">
     <table id="myTable">
     <thead>
@@ -16,626 +18,327 @@
                 <span class="sort-controls" onclick="sortTable(0, 'asc')">▲</span>
                 name
                 <span class="sort-controls" onclick="sortTable(0, 'desc')">▼</span>
+                <div>
+                    <input type="text" placeholder="Filter column..." oninput="filterByField(this.value, 0)">
+                </div>
             </th>
             <th>
                 <span class="sort-controls" onclick="sortTable(1, 'asc')">▲</span>
                 alpha
                 <span class="sort-controls" onclick="sortTable(1, 'desc')">▼</span>
+                <div>
+                    <input type="text" placeholder="Filter column..." oninput="filterByField(this.value, 1)">
+                </div>
             </th>
             <th>
                 <span class="sort-controls" onclick="sortTable(2, 'asc')">▲</span>
                 number
                 <span class="sort-controls" onclick="sortTable(2, 'desc')">▼</span>
+                <div>
+                    <select onchange="filterByPicklist(this.value, 2)">
+                        <option value="all">picklist</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
             </th>
             <th>
-                <span class="sort-controls" onclick="sortTable(3, 'asc')">▲</span>
-                email
-                <span class="sort-controls" onclick="sortTable(3, 'desc')">▼</span>
+                bool
+                <div>
+  <label><input type="radio" name="boolFilter" value="all"  onclick="filterByBooleanField('all',3)" checked> All</label>
+  <label><input type="radio" name="boolFilter" value="true" onclick="filterByBooleanField('true',3)"> True</label>
+  <label><input type="radio" name="boolFilter" value="false" onclick="filterByBooleanField('false',3)"> False</label>
+                </div>
             </th>
         </tr>
     </thead>
-    <tbody>
-            <tr>
-            <td>Burton Smith</td>
-            <td>DSJ26TXU5ZM</td>
-            <td>4</td>
-            <td>purus.ac.tellus@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Xaviera Stevens</td>
-            <td>QXP62GIV3DG</td>
-            <td>5</td>
-            <td>fames.ac@outlook.com</td>
-        </tr>
-        <tr>
-            <td>Eaton Lawson</td>
-            <td>YJY38CIE8DH</td>
-            <td>3</td>
-            <td>arcu.vestibulum.ante@hotmail.com</td>
-        </tr>
-        <tr>
-            <td>Zeus Sherman</td>
-            <td>MEX44RAS4KH</td>
-            <td>3</td>
-            <td>porttitor.tellus@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Amela Merrill</td>
-            <td>TKG44TYL9MI</td>
-            <td>5</td>
-            <td>ultricies.ornare@hotmail.edu</td>
-        </tr>
-        <tr>
-            <td>Tanner Marquez</td>
-            <td>THM22HMO3EJ</td>
-            <td>3</td>
-            <td>ac.turpis.egestas@protonmail.edu</td>
-        </tr>
-        <tr>
-            <td>Denton Martin</td>
-            <td>SOF80BGK4LX</td>
-            <td>1</td>
-            <td>semper.rutrum@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Nicholas Langley</td>
-            <td>HOS92QIU6GO</td>
-            <td>3</td>
-            <td>urna.ut@outlook.com</td>
-        </tr>
-        <tr>
-            <td>Kessie Franco</td>
-            <td>PUW26ZMH0SH</td>
-            <td>3</td>
-            <td>tortor.at@yahoo.edu</td>
-        </tr>
-        <tr>
-            <td>Rogan Daniels</td>
-            <td>ONH56KGD1GI</td>
-            <td>6</td>
-            <td>vulputate@hotmail.com</td>
-        </tr>
-        <tr>
-            <td>Quyn Hogan</td>
-            <td>OSY35TYO4RX</td>
-            <td>6</td>
-            <td>commodo.auctor@google.org</td>
-        </tr>
-        <tr>
-            <td>Lesley West</td>
-            <td>RQV53RNN3XJ</td>
-            <td>7</td>
-            <td>fringilla.mi.lacinia@protonmail.net</td>
-        </tr>
-        <tr>
-            <td>Neil Ware</td>
-            <td>NYL76BKQ7GF</td>
-            <td>8</td>
-            <td>ornare.facilisis@google.couk</td>
-        </tr>
-        <tr>
-            <td>Burke Mcneil</td>
-            <td>ODU82UDB8BO</td>
-            <td>2</td>
-            <td>nulla@yahoo.org</td>
-        </tr>
-        <tr>
-            <td>Clinton Goff</td>
-            <td>PKY13BET6CL</td>
-            <td>5</td>
-            <td>sociis.natoque.penatibus@google.net</td>
-        </tr>
-        <tr>
-            <td>Alvin Day</td>
-            <td>YLT57CIN3OR</td>
-            <td>4</td>
-            <td>facilisis@icloud.org</td>
-        </tr>
-        <tr>
-            <td>Luke Conley</td>
-            <td>JKL64ROY8AU</td>
-            <td>3</td>
-            <td>et.euismod@outlook.couk</td>
-        </tr>
-        <tr>
-            <td>Britanney Zamora</td>
-            <td>IGC77JNP4IE</td>
-            <td>8</td>
-            <td>lorem.semper@protonmail.org</td>
-        </tr>
-        <tr>
-            <td>Colby Norton</td>
-            <td>BJP42TJJ6BK</td>
-            <td>10</td>
-            <td>rutrum.magna.cras@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Pamela Oneal</td>
-            <td>NPG36VCA2ED</td>
-            <td>8</td>
-            <td>pharetra.nam@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Kerry Ochoa</td>
-            <td>BUP32YQP1GF</td>
-            <td>4</td>
-            <td>placerat@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Elaine Joyce</td>
-            <td>BMP53BIG7FX</td>
-            <td>3</td>
-            <td>cum.sociis@protonmail.couk</td>
-        </tr>
-        <tr>
-            <td>Janna Allen</td>
-            <td>JJP70KFW7EL</td>
-            <td>8</td>
-            <td>sapien.cras.dolor@hotmail.couk</td>
-        </tr>
-        <tr>
-            <td>Quamar Cooley</td>
-            <td>LYY56LZL8KY</td>
-            <td>8</td>
-            <td>eu.enim@outlook.edu</td>
-        </tr>
-        <tr>
-            <td>Clio Cain</td>
-            <td>SXG20UBD6DS</td>
-            <td>6</td>
-            <td>in.cursus@google.org</td>
-        </tr>
-        <tr>
-            <td>Cole Henry</td>
-            <td>OHD57LKM5TK</td>
-            <td>4</td>
-            <td>in.dolor.fusce@outlook.com</td>
-        </tr>
-        <tr>
-            <td>Destiny Chambers</td>
-            <td>YGM62RTE6CG</td>
-            <td>1</td>
-            <td>tempor.lorem.eget@google.net</td>
-        </tr>
-        <tr>
-            <td>Amanda Frost</td>
-            <td>KPA31VYB5TX</td>
-            <td>0</td>
-            <td>ipsum.primis@protonmail.couk</td>
-        </tr>
-        <tr>
-            <td>Wade Chavez</td>
-            <td>MML94CIW2NK</td>
-            <td>3</td>
-            <td>non.enim@aol.com</td>
-        </tr>
-        <tr>
-            <td>Igor Cantu</td>
-            <td>SRM32PBS3PX</td>
-            <td>0</td>
-            <td>eget.dictum@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Beverly Franklin</td>
-            <td>EDA13NKD8PB</td>
-            <td>3</td>
-            <td>et.ultrices.posuere@protonmail.com</td>
-        </tr>
-        <tr>
-            <td>Aaron Ellison</td>
-            <td>DUB73SHR4XV</td>
-            <td>4</td>
-            <td>praesent.eu.nulla@icloud.couk</td>
-        </tr>
-        <tr>
-            <td>Owen Howe</td>
-            <td>ZHT57GJJ1WE</td>
-            <td>5</td>
-            <td>duis.volutpat.nunc@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Eve Bishop</td>
-            <td>GNC46YQL1UE</td>
-            <td>5</td>
-            <td>magna@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Reece Chavez</td>
-            <td>JVD58WHH8LC</td>
-            <td>7</td>
-            <td>erat.nonummy@yahoo.edu</td>
-        </tr>
-        <tr>
-            <td>Minerva Green</td>
-            <td>OPR20BJI3BF</td>
-            <td>5</td>
-            <td>vestibulum.lorem@icloud.edu</td>
-        </tr>
-        <tr>
-            <td>Boris Crosby</td>
-            <td>ZSX12JAO1CG</td>
-            <td>6</td>
-            <td>aliquam.fringilla@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Simone Bruce</td>
-            <td>JSM79NAH5SV</td>
-            <td>0</td>
-            <td>nulla.aliquet@outlook.couk</td>
-        </tr>
-        <tr>
-            <td>Fuller Mendoza</td>
-            <td>TYX68UBI9ES</td>
-            <td>10</td>
-            <td>risus.varius@outlook.org</td>
-        </tr>
-        <tr>
-            <td>Nathaniel Mccall</td>
-            <td>IGQ08XIO3IY</td>
-            <td>6</td>
-            <td>metus@protonmail.couk</td>
-        </tr>
-        <tr>
-            <td>Caesar Cross</td>
-            <td>FUV27BNU7UE</td>
-            <td>9</td>
-            <td>sapien.cras@google.edu</td>
-        </tr>
-        <tr>
-            <td>Jameson Walsh</td>
-            <td>MSP20MYB7AN</td>
-            <td>9</td>
-            <td>lorem.donec@google.net</td>
-        </tr>
-        <tr>
-            <td>Ross Shepard</td>
-            <td>FTM53PMI1QV</td>
-            <td>1</td>
-            <td>in@yahoo.edu</td>
-        </tr>
-        <tr>
-            <td>Caesar Blackwell</td>
-            <td>XYY27JMP2UH</td>
-            <td>3</td>
-            <td>aliquam@icloud.net</td>
-        </tr>
-        <tr>
-            <td>Jolie Shannon</td>
-            <td>EMP66CXA9RU</td>
-            <td>2</td>
-            <td>nulla@yahoo.org</td>
-        </tr>
-        <tr>
-            <td>Drew Harrell</td>
-            <td>PNC59TQJ4YT</td>
-            <td>3</td>
-            <td>dui.augue@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Hermione Swanson</td>
-            <td>KXV31JTW3XN</td>
-            <td>5</td>
-            <td>turpis.non.enim@icloud.ca</td>
-        </tr>
-        <tr>
-            <td>Mikayla Holt</td>
-            <td>LTH98WZV5XN</td>
-            <td>9</td>
-            <td>sed@outlook.edu</td>
-        </tr>
-        <tr>
-            <td>Keane Rocha</td>
-            <td>XYX54YOK2QT</td>
-            <td>9</td>
-            <td>integer.urna@icloud.ca</td>
-        </tr>
-        <tr>
-            <td>Steel Wilcox</td>
-            <td>HRJ94WIV9QY</td>
-            <td>4</td>
-            <td>mauris.ipsum@aol.org</td>
-        </tr>
-        <tr>
-            <td>Quentin Flynn</td>
-            <td>BKS48JWL4TS</td>
-            <td>6</td>
-            <td>duis.cursus@outlook.com</td>
-        </tr>
-        <tr>
-            <td>Dennis Drake</td>
-            <td>PVB46CAI2OG</td>
-            <td>2</td>
-            <td>gravida.praesent.eu@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Priscilla Stokes</td>
-            <td>CGL59LVU2IX</td>
-            <td>0</td>
-            <td>sollicitudin.orci@hotmail.edu</td>
-        </tr>
-        <tr>
-            <td>Arden Mccoy</td>
-            <td>EUF24DGK4GQ</td>
-            <td>5</td>
-            <td>egestas.aliquam.fringilla@outlook.couk</td>
-        </tr>
-        <tr>
-            <td>Magee Romero</td>
-            <td>VVY12QUM6TB</td>
-            <td>1</td>
-            <td>orci.donec@yahoo.org</td>
-        </tr>
-        <tr>
-            <td>Courtney Harrell</td>
-            <td>HPD78TMY9KO</td>
-            <td>9</td>
-            <td>rutrum@aol.couk</td>
-        </tr>
-        <tr>
-            <td>Keith Evans</td>
-            <td>GVU29BNQ6TB</td>
-            <td>9</td>
-            <td>urna.et@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Zephr Elliott</td>
-            <td>JRI33GTI9WB</td>
-            <td>8</td>
-            <td>nulla.dignissim@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Rajah Mccray</td>
-            <td>UEJ87SBO6IT</td>
-            <td>1</td>
-            <td>mi@aol.couk</td>
-        </tr>
-        <tr>
-            <td>Kessie Knapp</td>
-            <td>XEY69WSI7FY</td>
-            <td>5</td>
-            <td>turpis.nulla@outlook.net</td>
-        </tr>
-        <tr>
-            <td>Jacqueline Burris</td>
-            <td>SVJ75BDS6PF</td>
-            <td>9</td>
-            <td>cum.sociis.natoque@aol.com</td>
-        </tr>
-        <tr>
-            <td>Roanna Byrd</td>
-            <td>NSU07JNJ5XQ</td>
-            <td>6</td>
-            <td>ut.semper@protonmail.couk</td>
-        </tr>
-        <tr>
-            <td>Mara Vega</td>
-            <td>GVP83EKU1BN</td>
-            <td>2</td>
-            <td>commodo.auctor@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Guy Dawson</td>
-            <td>LRU14REC6FE</td>
-            <td>6</td>
-            <td>vel.nisl@aol.com</td>
-        </tr>
-        <tr>
-            <td>Rhonda Leonard</td>
-            <td>XDP98SMN6XG</td>
-            <td>4</td>
-            <td>tortor.dictum.eu@icloud.net</td>
-        </tr>
-        <tr>
-            <td>Amir Norton</td>
-            <td>LLE45ASG9LP</td>
-            <td>6</td>
-            <td>consectetuer@yahoo.ca</td>
-        </tr>
-        <tr>
-            <td>Orson Griffith</td>
-            <td>BGH78FGQ4KV</td>
-            <td>6</td>
-            <td>sed.sem.egestas@hotmail.edu</td>
-        </tr>
-        <tr>
-            <td>Jeanette Henson</td>
-            <td>RPZ40WML6NC</td>
-            <td>4</td>
-            <td>rutrum.urna.nec@hotmail.ca</td>
-        </tr>
-        <tr>
-            <td>Sonya Stein</td>
-            <td>JWG62SKJ0JX</td>
-            <td>4</td>
-            <td>mauris.blandit@hotmail.edu</td>
-        </tr>
-        <tr>
-            <td>Henry Head</td>
-            <td>BYB57LTI6ND</td>
-            <td>3</td>
-            <td>iaculis.lacus@aol.edu</td>
-        </tr>
-        <tr>
-            <td>Leslie Walton</td>
-            <td>OXJ20YPV7QO</td>
-            <td>2</td>
-            <td>vestibulum.neque@hotmail.com</td>
-        </tr>
-        <tr>
-            <td>Ignacia Rollins</td>
-            <td>SZQ21GHY1IO</td>
-            <td>6</td>
-            <td>nullam.suscipit.est@protonmail.com</td>
-        </tr>
-        <tr>
-            <td>Jonas Wilkins</td>
-            <td>OKZ65NUL3MD</td>
-            <td>8</td>
-            <td>in.tincidunt@protonmail.com</td>
-        </tr>
-        <tr>
-            <td>Brett Torres</td>
-            <td>SFB91MON4BH</td>
-            <td>0</td>
-            <td>pede.nonummy.ut@google.com</td>
-        </tr>
-        <tr>
-            <td>Yuli Palmer</td>
-            <td>QJW48WPW3XR</td>
-            <td>8</td>
-            <td>lacus.cras.interdum@google.edu</td>
-        </tr>
-        <tr>
-            <td>Lila Harrington</td>
-            <td>NIE56BGQ2GQ</td>
-            <td>1</td>
-            <td>sit.amet.dapibus@icloud.com</td>
-        </tr>
-        <tr>
-            <td>Daquan Turner</td>
-            <td>BOC45MFA7MJ</td>
-            <td>4</td>
-            <td>auctor.ullamcorper.nisl@icloud.com</td>
-        </tr>
-        <tr>
-            <td>Isaiah Rivas</td>
-            <td>HDR26UIT3TY</td>
-            <td>3</td>
-            <td>orci.sem.eget@yahoo.couk</td>
-        </tr>
-        <tr>
-            <td>Oleg Navarro</td>
-            <td>UKV74WVZ8EV</td>
-            <td>9</td>
-            <td>in.mi@outlook.net</td>
-        </tr>
-        <tr>
-            <td>Zachery Yates</td>
-            <td>XHV42FWJ3SQ</td>
-            <td>8</td>
-            <td>mauris.sagittis.placerat@aol.org</td>
-        </tr>
-        <tr>
-            <td>Autumn Harrington</td>
-            <td>MVW11HPN6CJ</td>
-            <td>6</td>
-            <td>placerat@hotmail.edu</td>
-        </tr>
-        <tr>
-            <td>Price Morton</td>
-            <td>GYK83ZHO1CO</td>
-            <td>4</td>
-            <td>congue@google.net</td>
-        </tr>
-        <tr>
-            <td>Amos Donovan</td>
-            <td>PTT33DVH0RJ</td>
-            <td>10</td>
-            <td>nunc.lectus.pede@aol.net</td>
-        </tr>
-        <tr>
-            <td>Pamela Shannon</td>
-            <td>JRW70UVS3TD</td>
-            <td>1</td>
-            <td>in.condimentum.donec@protonmail.edu</td>
-        </tr>
-        <tr>
-            <td>Emery Mercer</td>
-            <td>HBV49WWT5FU</td>
-            <td>8</td>
-            <td>nunc.mauris.elit@aol.net</td>
-        </tr>
-        <tr>
-            <td>Kennan Alvarez</td>
-            <td>SFG81SFS6OH</td>
-            <td>10</td>
-            <td>eget.venenatis@protonmail.couk</td>
-        </tr>
-        <tr>
-            <td>Charles Snow</td>
-            <td>YQY50HPG8HC</td>
-            <td>8</td>
-            <td>ornare.facilisis.eget@yahoo.com</td>
-        </tr>
-        <tr>
-            <td>Mary Baldwin</td>
-            <td>BCH84AGZ6NV</td>
-            <td>5</td>
-            <td>malesuada.vel.venenatis@aol.com</td>
-        </tr>
-        <tr>
-            <td>Prescott Roth</td>
-            <td>GFZ71OCT3XE</td>
-            <td>1</td>
-            <td>eros.nec@protonmail.ca</td>
-        </tr>
-        <tr>
-            <td>Omar Newman</td>
-            <td>BSW36MSL2CU</td>
-            <td>5</td>
-            <td>proin.dolor@aol.ca</td>
-        </tr>
-        <tr>
-            <td>Noelani Bowman</td>
-            <td>NDH50HRH5HU</td>
-            <td>8</td>
-            <td>nec.ligula.consectetuer@yahoo.net</td>
-        </tr>
-        <tr>
-            <td>Lillian Moss</td>
-            <td>SDU80FBW1JA</td>
-            <td>0</td>
-            <td>tempus@google.com</td>
-        </tr>
-        <tr>
-            <td>Amy French</td>
-            <td>GIU26LXD9DN</td>
-            <td>1</td>
-            <td>luctus.aliquet.odio@yahoo.com</td>
-        </tr>
-        <tr>
-            <td>Cara Salinas</td>
-            <td>ZTS44FJK1CA</td>
-            <td>9</td>
-            <td>est.congue@outlook.ca</td>
-        </tr>
-        <tr>
-            <td>Darryl Mclean</td>
-            <td>ASO29KRB2QZ</td>
-            <td>5</td>
-            <td>euismod.est@yahoo.org</td>
-        </tr>
-        <tr>
-            <td>Rosalyn Charles</td>
-            <td>ZVB67BWT8KX</td>
-            <td>5</td>
-            <td>netus.et.malesuada@protonmail.org</td>
-        </tr>
-        <tr>
-            <td>Whoopi Herman</td>
-            <td>CHU68UHQ4EV</td>
-            <td>0</td>
-            <td>sollicitudin.commodo@outlook.couk</td>
-        </tr>
-        <tr>
-            <td>Price Holland</td>
-            <td>HYB28ATJ6BD</td>
-            <td>8</td>
-            <td>lorem.auctor.quis@yahoo.org</td>
-        </tr>
-        <tr>
-            <td>Solomon Larson</td>
-            <td>OQJ24SRW3MN</td>
-            <td>6</td>
-            <td>lobortis@aol.com</td>
-        </tr>
-        <tr>
-            <td>Rafael Orr</td>
-            <td>REJ49IXN5TH</td>
-            <td>9</td>
-            <td>tincidunt.congue.turpis@hotmail.org</td>
-        </tr>
-    </tbody>
+<tbody>
+    <tr>
+        <td>Burton Smith</td>
+        <td>DSJ26TXU5ZM</td>
+        <td>4</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Xaviera Stevens</td>
+        <td>QXP62GIV3DG</td>
+        <td>5</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Eaton Lawson</td>
+        <td>YJY38CIE8DH</td>
+        <td>3</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Zeus Sherman</td>
+        <td>MEX44RAS4KH</td>
+        <td>3</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Amela Merrill</td>
+        <td>TKG44TYL9MI</td>
+        <td>5</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Tanner Marquez</td>
+        <td>THM22HMO3EJ</td>
+        <td>3</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Denton Martin</td>
+        <td>SOF80BGK4LX</td>
+        <td>1</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Nicholas Langley</td>
+        <td>HOS92QIU6GO</td>
+        <td>3</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Kessie Franco</td>
+        <td>PUW26ZMH0SH</td>
+        <td>3</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Rogan Daniels</td>
+        <td>ONH56KGD1GI</td>
+        <td>6</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Quyn Hogan</td>
+        <td>OSY35TYO4RX</td>
+        <td>6</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Lesley West</td>
+        <td>RQV53RNN3XJ</td>
+        <td>7</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Neil Ware</td>
+        <td>NYL76BKQ7GF</td>
+        <td>8</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Burke Mcneil</td>
+        <td>ODU82UDB8BO</td>
+        <td>2</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Clinton Goff</td>
+        <td>PKY13BET6CL</td>
+        <td>5</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Alvin Day</td>
+        <td>YLT57CIN3OR</td>
+        <td>4</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Luke Conley</td>
+        <td>JKL64ROY8AU</td>
+        <td>3</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Britanney Zamora</td>
+        <td>IGC77JNP4IE</td>
+        <td>8</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Colby Norton</td>
+        <td>BJP42TJJ6BK</td>
+        <td>10</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Pamela Oneal</td>
+        <td>NPG36VCA2ED</td>
+        <td>8</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Kerry Ochoa</td>
+        <td>BUP32YQP1GF</td>
+        <td>4</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Elaine Joyce</td>
+        <td>BMP53BIG7FX</td>
+        <td>3</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Janna Allen</td>
+        <td>JJP70KFW7EL</td>
+        <td>8</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Quamar Cooley</td>
+        <td>LYY56LZL8KY</td>
+        <td>8</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Clio Cain</td>
+        <td>SXG20UBD6DS</td>
+        <td>6</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Cole Henry</td>
+        <td>OHD57LKM5TK</td>
+        <td>4</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Destiny Chambers</td>
+        <td>YGM62RTE6CG</td>
+        <td>1</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Amanda Frost</td>
+        <td>KPA31VYB5TX</td>
+        <td>0</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Wade Chavez</td>
+        <td>MML94CIW2NK</td>
+        <td>3</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Igor Cantu</td>
+        <td>SRM32PBS3PX</td>
+        <td>0</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Beverly Franklin</td>
+        <td>EDA13NKD8PB</td>
+        <td>3</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Aaron Ellison</td>
+        <td>DUB73SHR4XV</td>
+        <td>4</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Owen Howe</td>
+        <td>ZHT57GJJ1WE</td>
+        <td>5</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Eve Bishop</td>
+        <td>GNC46YQL1UE</td>
+        <td>5</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Reece Chavez</td>
+        <td>JVD58WHH8LC</td>
+        <td>7</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Minerva Green</td>
+        <td>OPR20BJI3BF</td>
+        <td>5</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Boris Crosby</td>
+        <td>ZSX12JAO1CG</td>
+        <td>6</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Simone Bruce</td>
+        <td>JSM79NAH5SV</td>
+        <td>0</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Fuller Mendoza</td>
+        <td>TYX68UBI9ES</td>
+        <td>10</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Nathaniel Mccall</td>
+        <td>IGQ08XIO3IY</td>
+        <td>6</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Caesar Cross</td>
+        <td>FUV27BNU7UE</td>
+        <td>9</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Jameson Walsh</td>
+        <td>MSP20MYB7AN</td>
+        <td>9</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Ross Shepard</td>
+        <td>FTM53PMI1QV</td>
+        <td>1</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Frank Barron</td>
+        <td>UBJ04FJL9FI</td>
+        <td>8</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>Hadley Bradford</td>
+        <td>PHF60MZT2UG</td>
+        <td>2</td>
+        <td>true</td>
+    </tr>
+    <tr>
+        <td>Cynthia Avery</td>
+        <td>GUZ16UYG3AJ</td>
+        <td>0</td>
+        <td>false</td>
+    </tr>
+</tbody>
+
     </table>
 </div>
 <script src="dynamic-table.js"></script>
