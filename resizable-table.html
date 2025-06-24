@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resizable Word-Wrapping Table</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    h2 {
+      padding: 10px;
+      background-color: #f0f0f0;
+      margin: 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .resizable-table-container {
+      resize: both;
+      overflow: auto;
+      border: 2px solid #888;
+      width: 80%;
+      height: 400px;
+      min-width: 300px;
+      min-height: 200px;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto; /* Enable responsive cell width */
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      word-wrap: break-word; /* Legacy */
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    thead {
+      background-color: #f9f9f9;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Resizable Table with Word-Wrapping Cells</h2>
+
+<div class="resizable-table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Short</td>
+        <td>This is a short description.</td>
+        <td>Nothing special here.</td>
+      </tr>
+      <tr>
+        <td>Long Title That Might Stretch the Cell</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis, dolor in interdum porttitor, tellus nisl blandit nisl, in bibendum risus justo id metus.</td>
+        <td>Line 1<br>Line 2<br>Line 3</td>
+      </tr>
+      <tr>
+        <td>Another Row</td>
+        <td>This cell contains a long paragraph that should wrap properly within the boundaries of the table cell, regardless of how narrow the container becomes.</td>
+        <td>✔️ This note is important and might go on and on and on to test wrapping.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Sortable Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 70%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+      position: relative;
+    }
+    .sort-controls {
+      font-size: 12px;
+      margin-left: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .sort-controls.active {
+      color: blue;
+      font-weight: bold;
+    }
+    .sort-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Dynamic Sortable Table</h2>
+
+<table id="myTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>24</td><td>New York</td></tr>
+    <tr><td>Bob</td><td>19</td><td>Los Angeles</td></tr>
+    <tr><td>Charlie</td><td>32</td><td>Chicago</td></tr>
+    <tr><td>David</td><td>27</td><td>Miami</td></tr>
+  </tbody>
+</table>
+
+<script>
+function makeTableSortable(tableId) {
+  const table = document.getElementById(tableId);
+  const headers = table.querySelectorAll("thead th");
+  const tbody = table.querySelector("tbody");
+
+  headers.forEach((th, index) => {
+    const wrapper = document.createElement("span");
+    wrapper.classList.add("sort-wrapper");
+
+    const asc = document.createElement("span");
+    asc.innerText = "▲";
+    asc.classList.add("sort-controls");
+    asc.onclick = () => sortTable(index, 'asc');
+
+    const desc = document.createElement("span");
+    desc.innerText = "▼";
+    desc.classList.add("sort-controls");
+    desc.onclick = () => sortTable(index, 'desc');
+
+    wrapper.appendChild(asc);
+    wrapper.appendChild(desc);
+    th.appendChild(wrapper);
+  });
+
+  function sortTable(columnIndex, direction) {
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const isNumeric = rows.every(row => !isNaN(row.cells[columnIndex].innerText.trim()));
+    const multiplier = direction === 'asc' ? 1 : -1;
+
+    const sortedRows = rows.sort((a, b) => {
+      let aVal = a.cells[columnIndex].innerText.trim();
+      let bVal = b.cells[columnIndex].innerText.trim();
+      if (isNumeric) {
+        aVal = parseFloat(aVal);
+        bVal = parseFloat(bVal);
+      } else {
+        aVal = aVal.toLowerCase();
+        bVal = bVal.toLowerCase();
+      }
+
+      if (aVal < bVal) return -1 * multiplier;
+      if (aVal > bVal) return 1 * multiplier;
+      return 0;
+    });
+
+    tbody.innerHTML = "";
+    tbody.append(...sortedRows);
+
+    // Update active indicators
+    document.querySelectorAll(".sort-controls").forEach(el => el.classList.remove("active"));
+    headers[columnIndex].querySelector(`.sort-controls:nth-child(${direction === 'asc' ? 1 : 2})`).classList.add("active");
+  }
+}
+
+// Initialize
+makeTableSortable("myTable");
+</script>
+
+</body>
+</html>
