@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resizable & Movable Table Columns</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      position: relative;
+    }
+    th {
+      background: #f3f3f3;
+      cursor: move;
+    }
+    .resizer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      cursor: col-resize;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<table id="myTable">
+  <thead>
+    <tr>
+      <th draggable="true">Name<div class="resizer"></div></th>
+      <th draggable="true">Age<div class="resizer"></div></th>
+      <th draggable="true">Country<div class="resizer"></div></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>25</td><td>USA</td></tr>
+    <tr><td>Bob</td><td>30</td><td>Canada</td></tr>
+    <tr><td>Charlie</td><td>28</td><td>UK</td></tr>
+  </tbody>
+</table>
+
+<script>
+  // Resizing
+  document.querySelectorAll('th').forEach(th => {
+    const resizer = th.querySelector('.resizer');
+    if (resizer) {
+      resizer.addEventListener('mousedown', initResize);
+    }
+
+    function initResize(e) {
+      const startX = e.pageX;
+      const startWidth = th.offsetWidth;
+      document.addEventListener('mousemove', doResize);
+      document.addEventListener('mouseup', stopResize);
+
+      function doResize(e) {
+        const newWidth = startWidth + (e.pageX - startX);
+        th.style.width = newWidth + 'px';
+      }
+
+      function stopResize() {
+        document.removeEventListener('mousemove', doResize);
+        document.removeEventListener('mouseup', stopResize);
+      }
+    }
+  });
+
+  // Column Drag and Drop
+  const table = document.getElementById('myTable');
+  let dragged;
+
+  table.querySelectorAll('th').forEach(th => {
+    th.addEventListener('dragstart', e => {
+      dragged = th;
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    th.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    });
+
+    th.addEventListener('drop', e => {
+      e.preventDefault();
+      if (dragged !== th) {
+        const fromIndex = [...dragged.parentNode.children].indexOf(dragged);
+        const toIndex = [...th.parentNode.children].indexOf(th);
+
+        moveColumn(table, fromIndex, toIndex);
+      }
+    });
+  });
+
+  function moveColumn(table, from, to) {
+    for (let row of table.rows) {
+      if (to < from) {
+        row.insertBefore(row.children[from], row.children[to]);
+      } else {
+        row.insertBefore(row.children[from], row.children[to + 1]);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
