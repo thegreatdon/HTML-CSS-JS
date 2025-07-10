@@ -1,0 +1,611 @@
+<html>
+<head>
+    <title></title>
+    <style>
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; 
+}
+
+table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: grey;
+  z-index: 1;
+}
+
+.table-wrapper {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+    </style>
+</head>
+<body>
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Class</th>
+        <th>Section</th>
+        <th>Roll No.</th>
+        <th>Grade</th>
+        <th>Marks</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Alice Johnson</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>1</td>
+        <td>A</td>
+        <td>92</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Bob Smith</td>
+        <td>14</td>
+        <td>9</td>
+        <td>B</td>
+        <td>2</td>
+        <td>B</td>
+        <td>78</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Charlie Brown</td>
+        <td>16</td>
+        <td>11</td>
+        <td>C</td>
+        <td>3</td>
+        <td>A+</td>
+        <td>95</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>David Lee</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>4</td>
+        <td>B+</td>
+        <td>82</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Eva Green</td>
+        <td>17</td>
+        <td>12</td>
+        <td>A</td>
+        <td>5</td>
+        <td>A+</td>
+        <td>98</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Fiona Adams</td>
+        <td>14</td>
+        <td>9</td>
+        <td>C</td>
+        <td>6</td>
+        <td>B</td>
+        <td>75</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>George Hill</td>
+        <td>15</td>
+        <td>10</td>
+        <td>B</td>
+        <td>7</td>
+        <td>C</td>
+        <td>65</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Hannah Fox</td>
+        <td>16</td>
+        <td>11</td>
+        <td>A</td>
+        <td>8</td>
+        <td>B+</td>
+        <td>88</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Ian Turner</td>
+        <td>15</td>
+        <td>10</td>
+        <td>C</td>
+        <td>9</td>
+        <td>C</td>
+        <td>55</td>
+        <td>Fail</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Jane Cooper</td>
+        <td>14</td>
+        <td>9</td>
+        <td>B</td>
+        <td>10</td>
+        <td>A</td>
+        <td>90</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Kyle Young</td>
+        <td>17</td>
+        <td>12</td>
+        <td>C</td>
+        <td>11</td>
+        <td>B</td>
+        <td>70</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Laura Scott</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>12</td>
+        <td>A</td>
+        <td>93</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Mike Wilson</td>
+        <td>16</td>
+        <td>11</td>
+        <td>B</td>
+        <td>13</td>
+        <td>B+</td>
+        <td>85</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Nina Patel</td>
+        <td>14</td>
+        <td>9</td>
+        <td>A</td>
+        <td>14</td>
+        <td>A</td>
+        <td>91</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Oliver King</td>
+        <td>15</td>
+        <td>10</td>
+        <td>C</td>
+        <td>15</td>
+        <td>B</td>
+        <td>74</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Paula Reed</td>
+        <td>16</td>
+        <td>11</td>
+        <td>B</td>
+        <td>16</td>
+        <td>C</td>
+        <td>62</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Quincy Hall</td>
+        <td>17</td>
+        <td>12</td>
+        <td>A</td>
+        <td>17</td>
+        <td>B+</td>
+        <td>88</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Rachel Moore</td>
+        <td>15</td>
+        <td>10</td>
+        <td>B</td>
+        <td>18</td>
+        <td>A+</td>
+        <td>97</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Sam Knight</td>
+        <td>14</td>
+        <td>9</td>
+        <td>C</td>
+        <td>19</td>
+        <td>B</td>
+        <td>79</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Tina Lewis</td>
+        <td>16</td>
+        <td>11</td>
+        <td>A</td>
+        <td>20</td>
+        <td>A</td>
+        <td>92</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>Uma Wright</td>
+        <td>17</td>
+        <td>12</td>
+        <td>B</td>
+        <td>21</td>
+        <td>B+</td>
+        <td>86</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Victor Allen</td>
+        <td>15</td>
+        <td>10</td>
+        <td>C</td>
+        <td>22</td>
+        <td>C</td>
+        <td>59</td>
+        <td>Fail</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Wendy Ross</td>
+        <td>14</td>
+        <td>9</td>
+        <td>B</td>
+        <td>23</td>
+        <td>A</td>
+        <td>94</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>Xavier Cox</td>
+        <td>16</td>
+        <td>11</td>
+        <td>A</td>
+        <td>24</td>
+        <td>B</td>
+        <td>73</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>Yvonne Diaz</td>
+        <td>17</td>
+        <td>12</td>
+        <td>C</td>
+        <td>25</td>
+        <td>B+</td>
+        <td>85</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>Zachary Hunt</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>26</td>
+        <td>A</td>
+        <td>91</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td>Amanda Price</td>
+        <td>14</td>
+        <td>9</td>
+        <td>B</td>
+        <td>27</td>
+        <td>B</td>
+        <td>78</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>Brian Shaw</td>
+        <td>16</td>
+        <td>11</td>
+        <td>C</td>
+        <td>28</td>
+        <td>B+</td>
+        <td>84</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td>Christina Reed</td>
+        <td>17</td>
+        <td>12</td>
+        <td>A</td>
+        <td>29</td>
+        <td>A+</td>
+        <td>96</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>Daniel White</td>
+        <td>15</td>
+        <td>10</td>
+        <td>B</td>
+        <td>30</td>
+        <td>B</td>
+        <td>74</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td>Ella Moore</td>
+        <td>14</td>
+        <td>9</td>
+        <td>C</td>
+        <td>31</td>
+        <td>A</td>
+        <td>89</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>Franklin Harris</td>
+        <td>16</td>
+        <td>11</td>
+        <td>A</td>
+        <td>32</td>
+        <td>B+</td>
+        <td>85</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>33</td>
+        <td>Gloria Lewis</td>
+        <td>17</td>
+        <td>12</td>
+        <td>B</td>
+        <td>33</td>
+        <td>A</td>
+        <td>92</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>34</td>
+        <td>Henry Clark</td>
+        <td>15</td>
+        <td>10</td>
+        <td>C</td>
+        <td>34</td>
+        <td>C</td>
+        <td>58</td>
+        <td>Fail</td>
+      </tr>
+      <tr>
+        <td>35</td>
+        <td>Isabella Baker</td>
+        <td>14</td>
+        <td>9</td>
+        <td>A</td>
+        <td>35</td>
+        <td>A+</td>
+        <td>95</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td>Jack Turner</td>
+        <td>16</td>
+        <td>11</td>
+        <td>B</td>
+        <td>36</td>
+        <td>B</td>
+        <td>77</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>37</td>
+        <td>Katherine Diaz</td>
+        <td>17</td>
+        <td>12</td>
+        <td>C</td>
+        <td>37</td>
+        <td>B+</td>
+        <td>83</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>38</td>
+        <td>Liam Mitchell</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>38</td>
+        <td>B</td>
+        <td>72</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>39</td>
+        <td>Madison Perez</td>
+        <td>14</td>
+        <td>9</td>
+        <td>B</td>
+        <td>39</td>
+        <td>A</td>
+        <td>90</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td>Noah Ross</td>
+        <td>16</td>
+        <td>11</td>
+        <td>C</td>
+        <td>40</td>
+        <td>C</td>
+        <td>60</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>41</td>
+        <td>Olivia Carter</td>
+        <td>17</td>
+        <td>12</td>
+        <td>A</td>
+        <td>41</td>
+        <td>A+</td>
+        <td>97</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>42</td>
+        <td>Parker Edwards</td>
+        <td>15</td>
+        <td>10</td>
+        <td>B</td>
+        <td>42</td>
+        <td>B</td>
+        <td>75</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>43</td>
+        <td>Quinn Foster</td>
+        <td>14</td>
+        <td>9</td>
+        <td>C</td>
+        <td>43</td>
+        <td>B+</td>
+        <td>82</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>44</td>
+        <td>Ruby Bennett</td>
+        <td>16</td>
+        <td>11</td>
+        <td>A</td>
+        <td>44</td>
+        <td>A</td>
+        <td>93</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>45</td>
+        <td>Samuel Howard</td>
+        <td>17</td>
+        <td>12</td>
+        <td>B</td>
+        <td>45</td>
+        <td>B+</td>
+        <td>87</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>46</td>
+        <td>Taylor Jenkins</td>
+        <td>15</td>
+        <td>10</td>
+        <td>C</td>
+        <td>46</td>
+        <td>C</td>
+        <td>63</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>47</td>
+        <td>Ursula Kelly</td>
+        <td>14</td>
+        <td>9</td>
+        <td>A</td>
+        <td>47</td>
+        <td>A</td>
+        <td>91</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>48</td>
+        <td>Vincent Long</td>
+        <td>16</td>
+        <td>11</td>
+        <td>B</td>
+        <td>48</td>
+        <td>B</td>
+        <td>76</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>49</td>
+        <td>Willow Morris</td>
+        <td>17</td>
+        <td>12</td>
+        <td>C</td>
+        <td>49</td>
+        <td>B+</td>
+        <td>85</td>
+        <td>Pass</td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td>Xander Nelson</td>
+        <td>15</td>
+        <td>10</td>
+        <td>A</td>
+        <td>50</td>
+        <td>C</td>
+        <td>61</td>
+        <td>Pass</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+
+</html>
