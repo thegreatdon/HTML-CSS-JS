@@ -1,0 +1,232 @@
+<html>
+<head>
+    <title>console.log-arrays</title>
+    <style>
+
+    </style>
+    <script>
+//Don’t forEach your way to hell.
+//map is concise, expressive, and doesn’t mutate your data. It’s like therapy for arrays.
+console.group('MAP');
+    const names = ['greg','don','alice', 'bob', 'charlie'];
+    const upper = names.map(name => name.toUpperCase());
+    console.log(names);
+    console.log(upper);
+console.groupEnd();
+
+//filter
+console.group('FILTER');
+    const scores = [80, 45, 90, 60];
+    const passed = scores.filter(score => score >= 60);
+    console.log(scores);
+    console.log(passed);
+console.groupEnd();
+
+//Reduce is terrifying. Until it’s not.
+//It can do everything: sum, flatten, group, even recreate most other methods. Just don’t overuse it. You’re not a wizard.
+console.group('REDUCE');
+    const total = [10, 20, 30].reduce((acc, val) => acc + val, 0);
+    console.log(total);
+console.groupEnd();
+
+
+//find(), Need the first match? This is your guy.
+console.group('FIND');
+    const users = [{id: 1}, {id: 2}];
+    const user = users.find(u => u.id === 2);
+    console.log(user);
+console.groupEnd();
+
+//concat() - Merge Like a Boss
+//Combines arrays. Doesn’t mutate originals.
+console.group('CONCAT');
+    const merged = [1, 2].concat([3, 4]);
+    console.log(merged);
+console.groupEnd();
+//flat() - Flatten the Madness
+//Especially useful when your array looks like it fell down a flight of stairs.
+console.group('FLATTEN');
+    const messy = [1, [2, [3]]];
+    const clean = messy.flat(2);
+    console.log(messy);
+    console.log(clean);
+console.groupEnd();
+
+//If you’re dealing with arrays of objects or large datasets, console.table() can format your output into a nice, readable table, making it easier to visualize complex data.
+console.group('TABLE');
+    const userTable = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 30 },
+    { name: 'Charlie', age: 35 }
+    ];
+    console.table(userTable);
+    //choose fields to display
+    console.table(userTable, 'name');
+
+    //use array to create field list
+    const usrLst = [
+        { id: 1, name: 'Alice', age: 30, role: 'admin' },
+        { id: 2, name: 'Bob', age: 25, role: 'user' },
+        { id: 3, name: 'Charlie', age: 35, role: 'editor' }
+        ];
+    const colsToShow = ['age', 'role']; // could be user input or config
+    console.table(usrLst, colsToShow);
+
+
+    //label fields
+    const performance = {
+    render: { ms: 34, fps: 29 },
+    update: { ms: 12, fps: 60 },
+    input: { ms: 5, fps: 120 }
+    };
+    console.table(performance);
+
+    //nested arrays with headers
+    const data = [
+    ['Alice', 30, 'admin'],
+    ['Bob', 25, 'user'],
+    ['Charlie', 35, 'editor']
+    ];
+    const headers = ['Name', 'Age', 'Role'];
+    const tableData = data.map(row => Object.fromEntries(headers.map((h, i) => [h, row[i]])));
+    console.table(tableData);
+
+    //using with map and set
+    const map = new Map([
+    ['Alice', 30],
+    ['Bob', 25],
+    ['Charlie', 35]
+    ]);
+    console.table(Array.from(map, ([name, age]) => ({ name, age })));
+
+    //format data before table
+    const transactions = [
+    { id: 1, amount: 3000, timestamp: 1621345678912 },
+    { id: 2, amount: 1500, timestamp: 1621345678913 },
+    ];
+    console.table(
+    transactions.map(t => ({
+        id: t.id,
+        amount: `$${t.amount.toFixed(2)}`,
+        date: new Date(t.timestamp).toLocaleString()
+    }))
+    );
+
+    //Display Object of Arrays (Transposed Table)
+    const columns = {
+    Name: ['Alice', 'Bob', 'Charlie'],
+    Age: [30, 25, 35],
+    Role: ['admin', 'user', 'editor']
+    };
+    // Transpose it
+    const rows = columns.Name.map((_, i) =>
+    Object.fromEntries(Object.entries(columns).map(([key, val]) => [key, val[i]]))
+    );
+    console.table(rows);
+
+console.groupEnd();
+
+//slice
+console.group('SLICE');
+    const slicedVal = names.slice(2);
+    console.log(slicedVal);
+console.groupEnd();
+
+//SORT
+console.group('SORT');
+     
+     console.log('unsorted strings:');
+     console.log(names);
+     console.log('sorted strings:');
+     const sorted = names.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+     console.log(sorted);
+     const numLst = [10, 5, 20];
+     console.log('unsorted integers');
+     console.log(numLst);
+     const stuff = numLst.sort((a, b) => a - b);
+     console.log('sorted integers');
+     console.log(stuff);
+console.groupEnd();
+
+//CONSOLE STYLING
+console.group('STYLE');
+    console.log('%cThis is styled text!', 'color: red; font-size: 20px; font-weight: bold;');
+    console.log('%cHello %cWorld!', 
+    'color: teal; font-size: 16px;', 
+    'color: orange; font-size: 16px; font-weight: bold;');
+
+    console.log('%c Styled Box ', `
+        background: #222;
+        color: #0f0;
+        padding: 4px 12px;
+        border: 1px solid #0f0;
+        border-radius: 4px;
+        `);
+
+    console.log('%cWARNING!\n%cThis action is irreversible.', 
+    'color: red; font-size: 18px; font-weight: bold;',
+    'color: black; font-size: 14px;');
+
+    console.log('%c⚠️ Error:', 'color: red; font-weight: bold;', 'Something went wrong!');
+    console.log(
+    '%cName:%c Alice  %cAge:%c 30',
+    'color: blue;', 'color: black;',
+    'color: green;', 'color: black;'
+    );
+
+    console.log('%c Box 1 ', `
+        background: red;
+        color: white;
+        font-size:10px;
+        padding: 4px 4px;
+        border-radius: 4px;
+        `);
+
+    console.log(
+    '%c n %c p %c r ',
+    'background: red;   padding: 1px; margin-right: 0px;font-size:20px;font-weight:bold;',
+    'background: black; padding: 1px; margin-right: 0px;font-size:20px;font-weight:bold;',
+    'background: blue;  padding: 1px;font-size:20px;font-weight:bold;'
+    );
+
+const dataG = [
+  { label: 'A', value: 5 },
+  { label: 'B', value: 10 },
+  { label: 'C', value: 7 },
+  { label: 'D', value: 3 }
+];
+
+dataG.forEach(item => {
+  const barLength = item.value * 10; // scale the bar
+  console.log(
+    `%c${item.label} |` + ' '.repeat(item.value),
+    `background: dodgerblue; padding: 4px ${barLength}px; color: white;`
+  );
+});
+   
+
+console.groupEnd();
+
+//CALL FUNCTIONS FROM  CONSOLE
+console.group('CALL FUNCTIONS');
+    function greet(name) {
+    console.log( `Hello, ${name}!`);
+    }
+    greet('Alice');
+console.groupEnd();
+
+//console input prompts
+//console.group('INPUT');
+//    const name = prompt("What's your name?");
+//    console.log(`Hello, ${name}!`);
+//console.groupEnd();
+    </script>
+</head>
+<body>
+<a href="https://medium.com/full-stack-forge/25-javascript-array-methods-every-dev-should-master-cb96099941d5" target="_blank">25 JavaScript Array Methods Every Dev Should Master</a>
+
+
+
+</body>
+
+</html>
