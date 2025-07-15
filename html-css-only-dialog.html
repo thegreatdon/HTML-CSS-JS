@@ -1,0 +1,205 @@
+<html>
+<head>
+    <title></title>
+    <style>
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+  background: #f9fafb;
+}
+
+.centered {
+  text-align: center;
+}
+
+/* Button */
+#open-dialog-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#open-dialog-btn:hover {
+  background-color: #4f46e5;
+}
+
+/* Dialog */
+dialog {
+  border: none;
+  padding: 0;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+dialog header,
+dialog footer {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+dialog header {
+  justify-content: space-between;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+dialog header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+dialog header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+dialog header button:hover {
+  color: #333;
+}
+
+dialog section {
+  padding: 1.25rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+dialog footer {
+  justify-content: flex-end;
+  gap: 0.5rem;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+}
+
+dialog footer button {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  transition: background 0.2s ease;
+}
+
+dialog footer button:hover {
+  background-color: #d4d4d4;
+}
+
+dialog footer button[value="yes"] {
+  background-color: #ffd166;
+}
+
+dialog footer button[value="yes"]:hover {
+  background-color: #ffca3a;
+}
+
+dialog footer button[value="no"] {
+  background-color: #8ecae6;
+}
+
+dialog footer button[value="no"]:hover {
+  background-color: #48bfe3;
+}
+
+@media (max-width: 500px) {
+  dialog {
+    width: 95%;
+  }
+
+  dialog section {
+    padding: 1rem;
+  }
+
+  dialog header,
+  dialog footer {
+    padding: 0.75rem 1rem;
+  }
+
+  dialog footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  dialog footer button {
+    width: 100%;
+  }
+}
+
+#result {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #374151;
+}
+    </style>
+
+</head>
+<body>
+<dialog id="robotDialog">
+  <form method="dialog">
+    <header>
+      <h3>🤖 Quick Check</h3>
+      <button type="button" aria-label="Close" onclick="robotDialog.close()">✕</button>
+    </header>
+    <section>
+      <p>We have to ask... Are you a robot?</p>
+    </section>
+    <footer>
+      <button value="no">No</button>
+      <button value="yes">Yes</button>
+    </footer>
+  </form>
+</dialog>
+
+<div class="centered">
+  <button
+    id="open-dialog-btn"
+    onclick="robotDialog.showModal()"
+  >
+     Verify Identity
+  </button>
+  <div id="result" aria-live="polite"></div>
+</div>
+
+</body>
+    <script>
+const resultBox = document.getElementById('result');
+
+robotDialog.addEventListener('close', () => {
+  const response = robotDialog.returnValue;
+  if (response === 'yes') {
+    resultBox.textContent = "🤖 Uh-oh. Robots aren't allowed!";
+  } else if (response === 'no') {
+    resultBox.textContent = "✅ Great! You're human. Welcome aboard.";
+  } else {
+    resultBox.textContent = "";
+  }
+});
+    </script>
+</html>

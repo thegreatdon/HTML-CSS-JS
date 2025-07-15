@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>browser-history</title>
+    <style>
+
+    </style>
+    <script>
+
+        browseBack = function(){
+            history.back();
+        }
+
+        browseForward = function(){
+            history.forward();
+        }
+
+        console.log(history.length);
+
+    </script>
+</head>
+<body>
+
+<a href="javascript:browseBack();">back</a> | <a href="javascript:browseForward();">forward</a>
+</body>
+
+</html>
